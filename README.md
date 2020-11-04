@@ -483,4 +483,4 @@ To get the latest foreign exchange reference rates
 
 **URL :** `https://api.exchangeratesapi.io/latest`
 
-**HTTP Verb :** GET
+**HTTP Verb :** `GET`
