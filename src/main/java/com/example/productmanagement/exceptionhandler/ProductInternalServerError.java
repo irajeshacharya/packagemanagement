@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *         Modified Date : Nov 4, 2020
  *
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class ProductPayloadError extends RuntimeException {
+@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+public class ProductInternalServerError extends RuntimeException {
 	private String detailMessage;
 
-	public ProductPayloadError(String exception) {
+	public ProductInternalServerError(String exception) {
 		super(exception);
 		this.detailMessage = exception;
 	}

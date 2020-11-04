@@ -26,11 +26,10 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
-	@ExceptionHandler(ProductNotFoundException.class)
-	public final ResponseEntity<ErrorDetails> handleProductNotFoundException(ProductNotFoundException ex,
-			WebRequest request) {
+	@ExceptionHandler(PackagePayloadError.class)
+	public final ResponseEntity<ErrorDetails> handlePackagePayloadError(PackagePayloadError ex, WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getDetailMessage(), request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(PackageInternalServerError.class)
@@ -40,10 +39,11 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@ExceptionHandler(PackagePayloadError.class)
-	public final ResponseEntity<ErrorDetails> handlePackagePayloadError(PackagePayloadError ex, WebRequest request) {
+	@ExceptionHandler(ProductNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handleProductNotFoundException(ProductNotFoundException ex,
+			WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getDetailMessage(), request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(ProductPayloadError.class)
@@ -51,4 +51,12 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getDetailMessage(), request.getDescription(false));
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
+
+	@ExceptionHandler(ProductInternalServerError.class)
+	public final ResponseEntity<ErrorDetails> handleProductInternalServerError(ProductInternalServerError ex,
+			WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getDetailMessage(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 }
