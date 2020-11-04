@@ -38,7 +38,7 @@ Product is the basic entity inorder to create a package where as a package may c
  **Response :**
    
 	{
-        	"id": 1,
+        		"id": 1,
     		"name": "Shirt",
     		"description": "Black Shirt",
     		"price": 50,
@@ -58,7 +58,7 @@ Product is the basic entity inorder to create a package where as a package may c
 **Response :**
    
 	{
-        	"id": 1,
+        		"id": 1,
     		"name": "Shirt",
     		"description": "Black Shirt",
     		"price": 50,
