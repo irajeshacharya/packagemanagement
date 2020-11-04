@@ -5,7 +5,7 @@ Product is the basic entity inorder to create a package where as a package may c
 
 ### Product Structure
 |Field|Type|Description|
-|---|---|---|
+|---|---|---|---|---| 
 |id| Integer |Unique Key - Identifier of the Product|
 | name | String |Name of the Product|
 | description | String | Description of the Product|
@@ -37,7 +37,7 @@ Product is the basic entity inorder to create a package where as a package may c
  **Response :**
    
 	{
-        		"id": 1,
+        	"id": 1,
     		"name": "Shirt",
     		"description": "Black Shirt",
     		"price": 50,
@@ -57,7 +57,7 @@ Product is the basic entity inorder to create a package where as a package may c
 **Response :**
    
 	{
-        		"id": 1,
+        	"id": 1,
     		"name": "Shirt",
     		"description": "Black Shirt",
     		"price": 50,
@@ -130,6 +130,26 @@ Product is the basic entity inorder to create a package where as a package may c
 
 ## Package APIs
 A package can be composed by adding one or more product. Package price will be sum of all the individual product price.
+
+### Package Structure
+|Field|Type|Description|
+|---|---|---|---|---| 
+|id| Integer |Unique Key - Identifier of the Package|
+| name | String |Name of the Product|
+| description | String | Description of the Package |
+| products | List<Product> | List of Products |
+| price | double |Price of the Package |
+| base | String |Base Currency|
+
+### Example
+    {
+        "id": 1,
+        "name": "Shirt",
+        "description": "Black Shirt",
+        "price": 50,
+        "base": "USD"
+    }
+    
 ### Create Package :
 **HTTP Verb :** `POST`
 	
@@ -221,7 +241,7 @@ A package can be composed by adding one or more product. Package price will be s
     ],
     "price": 150,
     "base": "USD"
-    }
+}
 
 ### Get All Packages :
 
