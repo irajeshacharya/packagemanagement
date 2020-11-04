@@ -478,4 +478,9 @@ A package can be composed by adding one or more product. Package price will be s
 |PackageInternalServerError|Internal Server Error|500|
 
 
-## 
+## Third Party API Integration
+To get the latest foreign exchange reference rates
+
+**URL :** `https://api.exchangeratesapi.io/latest`
+
+**HTTP Verb :** GET
