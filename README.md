@@ -1,5 +1,16 @@
 A REST API for managing Packages using Spring Boot App.
 
+## Authentication
+
+	Basic Auth  
+	Username : admin
+	Password : password
+
+## Storage
+Instead of database, have used basic data structure(Thread-safe) to store details. 
+
+    ConcurrentHashMap
+
 ## Product
 Product is the basic entity inorder to create a package where as a package may contain one or many product.
 
