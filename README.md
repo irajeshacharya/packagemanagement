@@ -1,6 +1,5 @@
 A REST API for managing Packages using Spring Boot App.
 
-# Components of the Project
 ## Product
 Product is the basic entity inorder to create a package where as a package may contain one or many product.
 
@@ -20,7 +19,7 @@ Product is the basic entity inorder to create a package where as a package may c
         "price": 50,
         "base": "USD"
     }
-## Available APIs
+## Product APIs
 ### Create Product :
 **HTTP Verb :** `POST`
 	
@@ -129,6 +128,334 @@ Product is the basic entity inorder to create a package where as a package may c
 |ProductNotFoundException|Product Not Found|404|
 |ProductInternalServerError|Internal Server Error|500|
 
-## Package
+## Package APIs
+A package can be composed by adding one or more product. Package price will be sum of all the individual product price.
+### Create Package :
+**HTTP Verb :** `POST`
+	
+**URL :**
+`http://localhost:8080/api/v1/packages`
 
-## Discount
+ **Payload :**  
+ 
+	{
+	"name" : "Dasara",
+	"description" : "Dasara Package",
+	"products" : [
+		    {
+        "id": 1,
+        "name": "Shirt",
+        "description": "Black Shirt",
+        "price": 50,
+        "base": "USD"
+    },
+    {
+        "id": 2,
+        "name": "Pant",
+        "description": "Black Pant",
+        "price": 100,
+        "base": "USD"
+    }
+		],
+	"base"	 : "USD",
+	"price" : 150
+
+	}
+    
+ **Response :**
+   
+	{
+    "id": 1,
+    "name": "Dasara",
+    "description": "Dasara Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        }
+    ],
+    "price": 150,
+    "base": "USD"
+	}
+        
+
+### Get Package By ID :
+**HTTP Verb :** `GET`
+
+**URL :**
+`http://localhost:8080/api/v1/packages/{ID}`
+
+**Example URL :** `http://localhost:8080/api/v1/packages/1`
+
+**Response :**
+   
+	{
+    "id": 1,
+    "name": "Dasara",
+    "description": "Dasara Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        }
+    ],
+    "price": 150,
+    "base": "USD"
+}
+
+### Get All Packages :
+
+**HTTP Verb :** `GET`
+
+**URL :**
+`http://localhost:8080/api/v1/packages`
+
+**Response :**
+   
+	[{
+    "id": 1,
+    "name": "Dasara",
+    "description": "Dasara Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        }
+    ],
+    "price": 150,
+    "base": "USD"
+	},
+    {
+    "id": 2,
+    "name": "Halloween",
+    "description": "Halloween Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        },
+        {
+        	"id": 3,
+        	"name": "TShirt",
+        	"description": "Black TShirt",
+        	"price": 75,
+        	"base": "USD"
+    	}
+    ],
+    "price": 225,
+    "base": "USD"
+	}]
+### Update Package :
+
+**HTTP Verb :** `PUT`
+
+**URL :**
+`http://localhost:8080/api/v1/packages/{ID}`
+
+**Example URL :** `http://localhost:8080/api/v1/packages/1`
+
+**Old Value :**
+
+	{
+    "id": 1,
+    "name": "Dasara",
+    "description": "Dasara Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        }
+    ],
+    "price": 150,
+    "base": "USD"
+	}
+	
+**Payload :**
+
+	{
+    "name": "Deepavali Celebration",
+    "description": "Deepavali Celebration Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        }
+    ],
+    "price": 300,
+    "base": "USD"
+	}
+
+	
+**Response :**
+   
+	{
+    "id": 1,
+    "name": "Deepavali Celebration",
+    "description": "Deepavali Celebration Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        }
+    ],
+    "price": 300,
+    "base": "USD"
+	}
+    
+###  Delete Product :
+
+**HTTP Verb :** `DELETE`
+
+**URL :**
+`http://localhost:8080/api/v1/packages/{ID}`
+
+**Example URL :** `http://localhost:8080/api/v1/packages/1`
+
+**Response :**
+
+	{
+    "id": 1,
+    "name": "Deepavali Celebration",
+    "description": "Deepavali Celebration Package",
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "description": "Black Shirt",
+            "price": 50,
+            "base": "USD"
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "description": "Black Pant",
+            "price": 100,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        },
+        {
+            "id": 3,
+            "name": "TShirt",
+            "description": "Black TShirt",
+            "price": 75,
+            "base": "USD"
+        }
+    ],
+    "price": 300,
+    "base": "USD"
+	}
+
+
+### Exception Handle
+|Exception Type|Scenario|Error Code|
+|---|---|---|
+|PackagePayloadError|Invalid Payload|401|
+|PackageNotFoundException|Package Not Found|404|
+|PackageInternalServerError|Internal Server Error|500|
+
+
+## 
