@@ -133,7 +133,7 @@ A package can be composed by adding one or more product. Package price will be s
 
 ### Package Structure
 |Field|Type|Description|
-|---|---|---|---|---| 
+|---|---|---|
 |id| Integer |Unique Key - Identifier of the Package|
 | name | String |Name of the Product|
 | description | String | Description of the Package |
